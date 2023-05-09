@@ -6,14 +6,15 @@
     <title>Registration</title>
 </head>
 <body>
-
 <header>
     <div class="container">
         <div class="row">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                    <a class="navbar-brand" href="#"> <h1>Logo</h1></a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="#"><h1><img src="images/logo.png" class="img-thumbnail w-25"alt="logo"></h1></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,7 +30,6 @@
                 </div>
             </nav>
         </div>
-
     </div>
 </header>
 <main>
@@ -37,8 +37,8 @@
         <div class="row">
             <h2>Registration</h2>
         </div>
-        <div class="row">
-            <form action="#" th:action="@{/registration}"  method="post">
+        <div class="row col-6">
+            <form action="#" th:action="@{/registration}" method="post">
                 <div class="mb-3 col-12">
                     <label for="firstname" class="form-label">First name</label>
                     <input type="text" class="form-control" id="firstname" name="firstname" required>
@@ -59,15 +59,24 @@
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="mb-3 col-12 d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
         </div>
         <div>
             <p></p>
         </div>
-
     </div>
 </main>
-<footer></footer>
+<footer>
+    <div class="container fixed-bottom mt-3 pt-3 bg-dark text-bg-dark">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>&copy; 2023 - Made by Fanja.P</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

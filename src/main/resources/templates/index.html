@@ -8,11 +8,12 @@
 <body>
 <header>
     <header>
-        <div class="container">
-            <div class="row">
-                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container ontainer-fluid ">
+            <div class="row col-12">
+                <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                     <div class="container-fluid">
-                        <a class="navbar-brand" href="#">Navbar</a>
+                        <a class="navbar-brand" href="#"><h1><img src="images/logo.png" class="img-thumbnail w-25"
+                                                                  alt="logo"></h1></a>
                         <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                                 aria-expanded="false" aria-label="Toggle navigation">
@@ -44,13 +45,12 @@
         </div>
     </header>
 </header>
-
 <main>
-    <div class="container mt-4">
-        <div class="row">
-            <h2>My contacts</h2>
+    <div class="container container-fluid mt-5">
+        <div class="row col-12 mt-5 mb-4">
+            <h2 class="text-center">My contacts</h2>
         </div>
-        <div class="row">
+        <div class="row col-12 mb-3">
             <table class="table">
                 <thead>
                 <tr>
@@ -64,8 +64,8 @@
                     <th scope="col">zip code</th>
                     <th scope="col">RelationShip</th>
                     <th scope="col">Was met...</th>
-                    <th scope="col">Supprimer</th>
-                    <th scope="col">Modifier</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -80,7 +80,6 @@
                     <td th:text="${c.getPostalCode()}"></td>
                     <td th:text="${c.getRelationship().getRelationshipType()}"></td>
                     <td th:text="${c.getMeetingPlace().getMeetingPlace()}"></td>
-
                     <td>
                         <div>
                             <form action="#" th:action="@{/index}" method="post">
@@ -99,12 +98,19 @@
                 </tbody>
             </table>
         </div>
-        <div>
+        <div class="row col-2 mx-auto">
             <a href="create-contact" class="btn btn-primary btn-sm" tabindex="-1" role="button">Add a new contact</a>
         </div>
-
     </div>
 </main>
-<footer></footer>
+<footer>
+    <div class="container fixed-bottom mt-3 pt-3 bg-dark text-bg-dark">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>&copy; 2023 - Made by Fanja.P</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

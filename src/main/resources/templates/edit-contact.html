@@ -1,114 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
-  <title>Home</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <title>Edit contact</title>
 </head>
 <body>
 <header>
-  <div class="container">
-    <div class="row">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Navbar</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Create a new contact</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-              </li>
-            </ul>
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
+    <div class="container">
+        <div class="row">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#"><h1><img src="images/logo.png" class="img-thumbnail w-25"
+                                                              alt="logo"></h1></a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="index">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="create-contact">Create a new contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="profile">Profile</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="login">Logout</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
         </div>
-      </nav>
     </div>
-  </div>
 </header>
 <main>
-  <div class="container d-flex justify-content-center align-items-center flex-column mt-4">
-    <div class="row">
-      <h2>Edit contact</h2>
+    <div class="container d-flex justify-content-center align-items-center flex-column mt-4">
+        <div class="row">
+            <h2>Edit contact</h2>
+        </div>
+        <div class="row">
+            <form action="#" th:action="@{/edit-contact}" th:object="${contact}" method="post">
+                <input type="hidden" th:field="*{id}"/>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="firstname" class="form-label"></label>
+                    <input type="text" class="form-control" id="firstname" name="firstname" th:field="*{firstName}"
+                           required>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="lastname" class="form-label">Last name</label>
+                    <input type="text" class="form-control" id="lastname" name="lastname" th:field="*{lastName}"
+                           required>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="phone" class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="phone" name="phone" th:field="*{phoneNumber}" required>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="address" name="address" th:field="*{address}" required>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="city" class="form-label">City</label>
+                    <input type="text" class="form-control" id="city" name="city" th:field="*{city}" required>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="zipCode" class="form-label">Zip code</label>
+                    <input type="text" class="form-control" id="zipCode" name="zipCode" th:field="*{postalCode}"
+                           required>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="typeRelationship">Select a type of relationship</label>
+                    <select class="form-select" aria-label="Default select example" name="typeRelationship"
+                            th:field="*{relationship}" id="typeRelationship">
+                        <option value="Friend" selected>Friend</option>
+                        <option value="Familly">Familly</option>
+                        <option value="New meeting">New meeting</option>
+                        <option value="Neighbor">Neighbor</option>
+                        w
+                    </select>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="meetingPlace">Choose the meeting place:</label>
+                    <select class="form-select" aria-label="Default select example" name="meetingPlace"
+                            id="meetingPlace" th:field="*{meetingPlace}">
+                        <option value="Holliday" selected>Holliday</option>
+                        <option value="School/Training">School</option>
+                        <option value="Party">Party</option>
+                        <option value="Work">Work</option>
+                        <option value="Concert/Festival">Concert</option>
+                        <option value="Familly circle">Familly circle</option>
+                    </select>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="otherPlace" class="form-label">Other place </label>
+                    <input type="text" class="form-control" id="otherPlace" name="otherPlace">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div>
+            <p></p>
+        </div>
     </div>
-    <div class="row">
-      <form action="#" th:action="@{/edit-contact}" th:object="${contact}"method="post">
-        <input type="hidden" th:field="*{id}"/>
-        <div class="mb-3 col-12 mt-3">
-          <label for="firstname" class="form-label"></label>
-          <input type="text"   class="form-control" id="firstname" name="firstname"  th:field="*{firstName}" required>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="lastname" class="form-label">Last name</label>
-          <input type="text" class="form-control" id="lastname" name="lastname" th:field="*{lastName}" required>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="email" class="form-label">Email</label>
-          <input type="email" class="form-control" id="email" name="email" th:field="*{email}" required>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="phone" class="form-label">Phone</label>
-          <input type="text" class="form-control" id="phone" name="phone" th:field="*{phoneNumber}"required>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="address" class="form-label">Address</label>
-          <input type="text" class="form-control" id="address" name="address" th:field="*{address}"required>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="city" class="form-label">City</label>
-          <input type="text" class="form-control" id="city" name="city" th:field="*{city}"required>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="zipCode" class="form-label">Zip code</label>
-          <input type="text" class="form-control" id="zipCode" name="zipCode" th:field="*{postalCode}"required>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="typeRelationship">Select a type of relationship</label>
-          <select class="form-select" aria-label="Default select example" name="typeRelationship" th:field="*{relationship}" id="typeRelationship">
-            <option value="Friend" selected>Friend</option>
-            <option value="Familly">Familly</option>
-            <option value="New meeting">New meeting</option>
-            <option value="Neighbor">Neighbor</option>w
-          </select>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="meetingPlace">Choose the meeting place:</label>
-          <select class="form-select" aria-label="Default select example" name="meetingPlace" id="meetingPlace" th:field="*{meetingPlace}">
-            <option value="Holliday" selected>Holliday</option>
-            <option value="School/Training">School</option>
-            <option value="Party">Party</option>
-            <option value="Work">Work</option>
-            <option value="Concert/Festival">Concert</option>
-            <option value="Familly circle">Familly circle</option>
-          </select>
-        </div>
-        <div class="mb-3 col-12 mt-3">
-          <label for="otherPlace" class="form-label">Other place </label>
-          <input type="text" class="form-control" id="otherPlace" name="otherPlace">
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form>
-    </div>
-    <div>
-      <p></p>
-    </div>
-  </div>
 </main>
-<footer></footer>
+<footer>
+    <div class="container footer-bottom mt-3 pt-3 bg-dark text-bg-dark">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>&copy; 2023 - Made by Fanja.P</p>
+            </div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
 
