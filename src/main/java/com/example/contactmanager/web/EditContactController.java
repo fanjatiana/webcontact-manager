@@ -15,8 +15,6 @@ public class EditContactController {
 
     @Autowired
     private ContactRepository contactRepository;
-    @Autowired
-    private ContactService contactService;
 
    @GetMapping("/edit-contact")
    public String showEditContactForm(@RequestParam("id") Long id, Model model) {

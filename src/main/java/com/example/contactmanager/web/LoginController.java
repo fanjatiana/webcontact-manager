@@ -17,9 +17,6 @@ import java.util.Optional;
 public class LoginController {
 
     @Autowired
-    private UserService userService;
-
-    @Autowired
     private UserRepository userRepository;
 
     @GetMapping("/login")

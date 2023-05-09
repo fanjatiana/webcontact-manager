@@ -18,7 +18,6 @@ public class EditProfileController {
 
     @Autowired
     private UserRepository userRepository;
-
     @GetMapping("/edit-profile")
     public String showEditProfileForm(@RequestParam("id") Long id, Model model) {
         User user = userRepository.findById(id)

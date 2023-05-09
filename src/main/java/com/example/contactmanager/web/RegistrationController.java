@@ -17,9 +17,6 @@ public class RegistrationController {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private UserRepository userRepository;
-
     @GetMapping("/registration")
     public String displayRegistrationForm() {
         return "registration";
@@ -38,8 +35,4 @@ public class RegistrationController {
         });
         return optionalUser.isPresent() ? "redirect:/index" : "404";
     }
-
-
-
-
 }

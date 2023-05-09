@@ -13,11 +13,14 @@ public class ProfileController {
     private UserRepository userRepository;
     @GetMapping("/profile")
     public String showProfile( Model model) {
-        Long id=1L;
-            Optional<User> optionalUseruser = userRepository.findById(id);
-            optionalUseruser.ifPresent(user->{
-                model.addAttribute("user", user);
-            });
-        return optionalUseruser.isPresent() ? "redirect:/profile" : "404";
+        Long id = 1L;
+        Optional<User> optionalUser = userRepository.findById(id);
+        if (optionalUser.isPresent()) {
+            User user = optionalUser.get();
+            model.addAttribute("user", user);
+            return "profile";
+        } else {
+            return "404";
+        }
     }
 }
