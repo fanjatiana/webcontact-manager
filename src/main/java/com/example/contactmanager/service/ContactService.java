@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ContactService {
@@ -55,5 +56,37 @@ public class ContactService {
                 new Relationship(typeRelationship),
                 new MeetingPlace(meetingPlace));
         contactRepository.save(contact);
+    }
+
+    public Contact CreateNewContact(Contact contact){
+        return contactRepository.save(contact);
+    }
+
+    public void deleteContact(Contact contact){
+        contactRepository.delete(contact);
+    }
+
+    public Optional<Contact> findById(Long id){
+        return contactRepository.findById(id);
+    }
+
+    public Contact updateContact(Contact contact){
+        Optional<Contact> optionalContact = contactRepository.findById(contact.getId());
+
+        if(optionalContact.isPresent()){
+            Contact existingContact = optionalContact.get();
+            existingContact.setFirstName(contact.getFirstName());
+            existingContact.setLastName(contact.getLastName());
+            existingContact.setEmail(contact.getEmail());
+            existingContact.setPhoneNumber(contact.getPhoneNumber());
+            existingContact.setAddress(contact.getAddress());
+            existingContact.setCity(contact.getCity());
+            existingContact.setPostalCode(contact.getPostalCode());
+            existingContact.setRelationship(contact.getRelationship());
+            existingContact.setMeetingPlace(contact.getMeetingPlace());
+            return contactRepository.save(existingContact);
+        }else{
+            return null;
+        }
     }
 }
