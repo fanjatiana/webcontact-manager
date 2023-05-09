@@ -30,14 +30,14 @@ public class LoginController {
     @PostMapping("/login")
     public String handleLoginForm(@RequestParam("email") String email,
                                   @RequestParam("password") String password,
-                                  HttpSession session) {
+                                  HttpSession session, Model model) {
         Optional<User> optionalUser = userRepository.findUserByEmailAndPassword(email, password);
-        optionalUser.ifPresent(user -> {
-            session.setAttribute("user", user);
-
-        });
-        return optionalUser.isPresent() ? "redirect:/index" : "404";
-
+        if (optionalUser.isPresent()) {
+            session.setAttribute("user", optionalUser);
+            return "redirect:/index";
+        } else {
+            model.addAttribute("error", true);
+            return "login";
+        }
     }
-
 }

@@ -25,7 +25,6 @@ public class EditContactController {
        model.addAttribute("contact", contact);
        return "edit-contact";
    }
-
     @PostMapping("/edit-contact")
     public String updateContact(@ModelAttribute("contact") Contact contact) {
         contactRepository.save(contact);

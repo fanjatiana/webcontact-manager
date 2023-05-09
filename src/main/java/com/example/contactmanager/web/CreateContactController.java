@@ -15,8 +15,6 @@ import java.util.List;
 @Controller
 public class CreateContactController {
     @Autowired
-    private ContactRepository contactRepository;
-    @Autowired
     private ContactService contactService;
 
     @GetMapping("/create-contact")

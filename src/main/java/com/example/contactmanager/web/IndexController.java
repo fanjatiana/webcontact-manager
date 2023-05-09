@@ -22,7 +22,6 @@ public class IndexController {
         List<Contact> contactList = contactService.findAll();
         model.addAttribute("contacts", contactList);
         return "index";
-
     }
 
     @PostMapping("/index")

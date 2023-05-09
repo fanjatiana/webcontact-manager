@@ -9,5 +9,4 @@ public class PageNotFoundController {
     public String displayPageNotFoundForm() {
         return "404";
     }
-
 }

@@ -55,8 +55,8 @@
                 </div>
             </form>
         </div>
-        <div>
-            <p></p>
+        <div class="error" th:if="${error}">
+            <p>  Invalid email or password</p>
         </div>
     </div>
 </main>
