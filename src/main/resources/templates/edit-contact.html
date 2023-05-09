@@ -48,16 +48,18 @@
         <div class="row">
             <h2>Edit contact</h2>
         </div>
-        <div class="row">
+        <div class="row col-4">
             <form action="#" th:action="@{/edit-contact}" th:object="${contact}" method="post">
-                <input type="hidden" th:field="*{id}"/>
                 <div class="mb-3 col-12 mt-3">
-                    <label for="firstname" class="form-label"></label>
+                    <input type="hidden" th:field="*{id}"/>
+                </div>
+                <div class="mb-3 col-12 mt-3">
+                    <label for="firstname" class="form-label">Firstname</label>
                     <input type="text" class="form-control" id="firstname" name="firstname" th:field="*{firstName}"
                            required>
                 </div>
                 <div class="mb-3 col-12 mt-3">
-                    <label for="lastname" class="form-label">Last name</label>
+                    <label for="lastname" class="form-label">Lastname</label>
                     <input type="text" class="form-control" id="lastname" name="lastname" th:field="*{lastName}"
                            required>
                 </div>
