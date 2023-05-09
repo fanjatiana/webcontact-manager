@@ -3,6 +3,7 @@ package com.example.contactmanager.web;
 import com.example.contactmanager.entity.User;
 import com.example.contactmanager.repository.UserRepository;
 import com.example.contactmanager.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +26,18 @@ public class LoginController {
     public String displayLoginForm() {
         return "login";
     }
+
     @PostMapping("/login")
-    public String handleLoginForm() {
-        return "redirect:/index";
+    public String handleLoginForm(@RequestParam("email") String email,
+                                  @RequestParam("password") String password,
+                                  HttpSession session) {
+        Optional<User> optionalUser = userRepository.findUserByEmailAndPassword(email, password);
+        optionalUser.ifPresent(user -> {
+            session.setAttribute("user", user);
+
+        });
+        return optionalUser.isPresent() ? "redirect:/index" : "404";
+
     }
 
 }
