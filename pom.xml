@@ -33,10 +33,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
+		<!--Spring devtools-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
+			<version>3.0.6</version>
 			<scope>runtime</scope>
 			<optional>true</optional>
 		</dependency>
