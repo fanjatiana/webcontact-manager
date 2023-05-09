@@ -2,9 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/5.2.3/css/bootstrap.min.css">
+    <title>Home</title>
 </head>
 <body>
+<header>
+    <header>
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">Navbar</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item">
+                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Create a new contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Profile</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Logout</a>
+                                </li>
+                            </ul>
+                            <form class="d-flex">
+                                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                                <button class="btn btn-outline-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+</header>
 
+<main>
+    <div class="container mt-4">
+        <div class="row">
+            <h2>My contacts</h2>
+        </div>
+        <div class="row">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Firstname</th>
+                    <th scope="col">Lastname</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone number</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">zip code</th>
+                    <th scope="col">RelationShip</th>
+                    <th scope="col">Was met...</th>
+                    <th scope="col">Supprimer</th>
+                    <th scope="col">Modifier</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="c:${contacts}">
+                    <td th:text="${c.getId()}"></td>
+                    <td th:text="${c.getFirstName()}"></td>
+                    <td th:text="${c.getLastName()}"></td>
+                    <td th:text="${c.getEmail()}"></td>
+                    <td th:text="${c.getPhoneNumber()}"></td>
+                    <td th:text="${c.getAddress()}"></td>
+                    <td th:text="${c.getCity()}"></td>
+                    <td th:text="${c.getPostalCode()}"></td>
+                    <td th:text="${c.getRelationship().getRelationshipType()}"></td>
+                    <td th:text="${c.getMeetingPlace().getMeetingPlace()}"></td>
+
+                    <td>
+                        <div>
+                            <form action="#" th:action="@{/index}" method="post">
+                                <input type="hidden" name="btnId" th:value="${c.getId()}"/>
+                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                            </form>
+                        </div>
+                    </td>
+                    <td>
+                        <form th:action="@{/edit-contact}" th:object="${c}" method="get">
+                            <input type="hidden" name="id" th:value="${c.id}"/>
+                            <button type="submit" class="btn btn-primary btn-sm">Edit</button>
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <a href="create-contact" class="btn btn-primary btn-sm" tabindex="-1" role="button">Add a new contact</a>
+        </div>
+
+    </div>
+</main>
+<footer></footer>
 </body>
 </html>

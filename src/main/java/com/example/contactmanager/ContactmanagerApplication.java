@@ -1,5 +1,6 @@
 package com.example.contactmanager;
 
+import com.example.contactmanager.service.ContactService;
 import com.example.contactmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -15,8 +16,11 @@ public class ContactmanagerApplication implements CommandLineRunner {
 
 	@Autowired
 	UserService userService;
+	@Autowired
+	ContactService contactService;
 	@Override
 	public void run(String... args) throws Exception {
 		userService.addUser();
+		contactService.addContact();
 	}
 }
