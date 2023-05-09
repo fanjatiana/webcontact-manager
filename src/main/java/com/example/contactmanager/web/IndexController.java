@@ -30,6 +30,4 @@ public class IndexController {
         contactRepository.deleteById(id);
         return "redirect:/index";
     }
-
-
 }

@@ -6,10 +6,7 @@ import com.example.contactmanager.service.ContactService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
 
@@ -22,23 +19,10 @@ public class EditContactController {
     private ContactService contactService;
 
    @GetMapping("/edit-contact")
-    public String contact() {
-        return "edit-contact";
-    }
-
-    @PostMapping("edit-contact/{id}")
-    public String editContact(@PathVariable Long id, Model model) {
-        Optional<Contact> optionalContact = contactRepository.findById(id);
-        optionalContact.ifPresent(contact -> {
-            model.addAttribute("contact", contact);
-        });
-        return optionalContact.isPresent() ? "edit-contact" : "404";
-
-    }
-
-    @PostMapping("/edit-contact")
-    public String editContact(@ModelAttribute("contact") Contact contact) {
-        contactRepository.save(contact);
-        return "redirect:/index";
-    }
+   public String showEditContactForm(@RequestParam("id") Long id, Model model) {
+       Contact contact = contactRepository.findById(id)
+               .orElseThrow(() -> new IllegalArgumentException("Invalid contact id: " + id));
+       model.addAttribute("contact", contact);
+       return "edit-contact";
+   }
 }
